@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainMenu">
 
+    <fragment
+        android:id="@+id/mainMenu"
+        android:name="com.example.uzapp.fragments.MainMenu"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            android:id="@+id/action_mainMenu_to_notes"
+            app:destination="@id/notes" />
+        <action
+            android:id="@+id/action_mainMenu_to_reminders"
+            app:destination="@id/reminders" />
+        <action
+            android:id="@+id/action_mainMenu_to_contacts"
+            app:destination="@id/contacts" />
+        <action
+            android:id="@+id/action_mainMenu_to_multimedia"
+            app:destination="@id/multimedia" />
+    </fragment>
+    <fragment
+        android:id="@+id/contacts"
+        android:name="com.example.uzapp.fragments.Contacts"
+        android:label="fragment_contacts"
+        tools:layout="@layout/fragment_contacts" />
+    <fragment
+        android:id="@+id/multimedia"
+        android:name="com.example.uzapp.fragments.Multimedia"
+        android:label="fragment_multimedia"
+        tools:layout="@layout/fragment_multimedia" />
+    <fragment
+        android:id="@+id/notes"
+        android:name="com.example.uzapp.fragments.Notes"
+        android:label="fragment_notes"
+        tools:layout="@layout/fragment_notes" />
+    <fragment
+        android:id="@+id/reminders"
+        android:name="com.example.uzapp.fragments.Reminders"
+        android:label="fragment_reminders"
+        tools:layout="@layout/fragment_reminders" />
 </navigation>

@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Notes" >
+    tools:context=".fragments.Notes">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:backgroundTint="@color/fabColor"
         android:clickable="true"
+        android:focusable="true"
         android:src="@drawable/ic_add_24px"
-        app:backgroundTint="#af0"
+        app:backgroundTint="@color/fabColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -22,6 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/search"
+        android:inputType="text"
+        android:maxLines="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,12 +33,27 @@
         android:id="@+id/deleteNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/fabColor"
         android:clickable="true"
-        android:src="@drawable/ic_add_24px"
-        app:backgroundTint="#F00"
+        android:focusable="true"
+        android:src="@drawable/ic_delete_24px"
+        app:backgroundTint="@color/fabColor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/addNote"
+        app:layout_constraintStart_toEndOf="@+id/backNotes"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/backNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/fabColor"
+        android:clickable="true"
+        android:src="@drawable/ic_arrow_back_24px"
+        app:backgroundTint="@color/fabColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="16dp"/>
 
     <FrameLayout
         android:layout_width="match_parent"

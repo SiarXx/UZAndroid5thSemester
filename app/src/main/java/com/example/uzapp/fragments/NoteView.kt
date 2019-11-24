@@ -40,7 +40,9 @@ class NoteView : Fragment(),View.OnClickListener {
         }
 
         val saveNoteBtn = view.saveNote
+        val backBtn = view.backNoteView
         saveNoteBtn.setOnClickListener(this)
+        backBtn.setOnClickListener(this)
         return view
     }
     override fun onClick(view: View?){
@@ -50,6 +52,7 @@ class NoteView : Fragment(),View.OnClickListener {
                 Toast.makeText(context,"Note saved successful",Toast.LENGTH_SHORT).show()
                 Navigation.findNavController(view).popBackStack()
             }
+            R.id.backNoteView -> Navigation.findNavController(view).popBackStack()
         }
     }
     private fun saveNote(note:Note){

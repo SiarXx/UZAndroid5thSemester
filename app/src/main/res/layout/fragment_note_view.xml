@@ -19,7 +19,9 @@
             android:layout_height="wrap_content"
             android:hint="@string/title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:maxLines="1"
+            android:inputType="text"/>
 
         <EditText
             android:id="@+id/noteBody"
@@ -39,11 +41,25 @@
         android:id="@+id/saveNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_add_24px"
-        android:focusable="true" />
+        android:backgroundTint="@color/fabColor"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_save_24px"
+        app:backgroundTint="@color/fabColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/backNoteView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/fabColor"
+        android:clickable="true"
+        android:src="@drawable/ic_arrow_back_24px"
+        app:backgroundTint="@color/fabColor"
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/recyclerLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -8,5 +9,14 @@
         android:id="@+id/listTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/listHighlight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="TextView" />
+
 </LinearLayout>

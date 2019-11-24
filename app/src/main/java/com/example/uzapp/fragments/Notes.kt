@@ -51,8 +51,10 @@ class Notes : Fragment(), NotesViewAdapter.ListOnClickListener,NotesViewAdapter.
         //Set listener on FAB's
         val addNoteBtn = view.addNote
         val deleteNotesBtn = view.deleteNotes
+        val backBtn = view.backNotes
         deleteNotesBtn.setOnClickListener(this)
         addNoteBtn.setOnClickListener(this)
+        backBtn.setOnClickListener(this)
 
         search = view.search
         search.addTextChangedListener(this)
@@ -63,7 +65,7 @@ class Notes : Fragment(), NotesViewAdapter.ListOnClickListener,NotesViewAdapter.
         AlertDialog.Builder(activity)
             .setTitle("Delete selected Notes")
             .setMessage("Are you sure you want to delete selected notes?")
-            .setPositiveButton("yes"){dialog, which ->
+            .setPositiveButton("yes"){ _, _ ->
                 deleteNotes()
             }
             .setNegativeButton("No",null).show()
@@ -90,6 +92,9 @@ class Notes : Fragment(), NotesViewAdapter.ListOnClickListener,NotesViewAdapter.
     }
     private fun listNotes():ArrayList<Note>{
         val directory = File(activity!!.filesDir,"Notes")
+        if(!directory.exists()){
+            directory.mkdir()
+        }
         val files: Array<File> = directory.listFiles()
         val notesTmp = ArrayList<Note>()
         files.forEach { notesTmp.add(mapper.mapNotes(it)) }
@@ -116,6 +121,7 @@ class Notes : Fragment(), NotesViewAdapter.ListOnClickListener,NotesViewAdapter.
         when(view!!.id) {
             R.id.addNote -> Navigation.findNavController(view).navigate(R.id.action_notes_to_noteView)
             R.id.deleteNotes -> deleteStart()
+            R.id.backNotes -> Navigation.findNavController(view).popBackStack()
         }
     }
     override fun onClickNav(position: Int) {
@@ -129,6 +135,7 @@ class Notes : Fragment(), NotesViewAdapter.ListOnClickListener,NotesViewAdapter.
                 it.selected = !it.selected
             }
         }
+        notesAdapter.notifyDataSetChanged()
     }
     override fun afterTextChanged(text: Editable?) {}
     override fun beforeTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {}

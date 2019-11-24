@@ -14,24 +14,24 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/title"
-            app:layout_constraintTop_toTopOf="match_parent"
-            app:layout_constraintStart_toStartOf="match_parent"
+            android:id="@+id/noteTitle"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:hint="@string/title"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editText"
-            android:background="@android:color/transparent"
+            android:id="@+id/noteBody"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="60dp"
-            android:hint="@string/type_here"
-            app:layout_constraintTop_toBottomOf="@+id/title"
-            app:layout_constraintStart_toStartOf="parent"
+            android:background="@android:color/transparent"
             android:gravity="start|top"
-            android:inputType="textMultiLine" />
+            android:hint="@string/type_here"
+            android:inputType="textMultiLine"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/noteTitle"
+            android:layout_marginTop="60dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

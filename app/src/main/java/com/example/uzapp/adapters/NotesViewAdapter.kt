@@ -8,25 +8,19 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.uzapp.R
+import com.example.uzapp.interfaces.ListOnClickListener
+import com.example.uzapp.interfaces.OnLongClickListener
 import com.example.uzapp.models.Note
 import kotlinx.android.synthetic.main.note_list_item.view.*
-import org.w3c.dom.Text
 
 class NotesViewAdapter(
     private val notes: ArrayList<Note>,
     private val listOnClickListener: ListOnClickListener,
     private val listOnLongClickListener: OnLongClickListener
-) : RecyclerView.Adapter<NotesViewAdapter.MyViewHolder>()
+) : RecyclerView.Adapter<NotesViewAdapter.NotesViewHolder>()
 {
 
-
-    interface ListOnClickListener {
-    fun onClickNav(position: Int)
-}
-    interface OnLongClickListener {
-        fun onLongClick(position: Int)
-    }
-    inner class MyViewHolder(container: View) : RecyclerView.ViewHolder(container) {
+    inner class NotesViewHolder(container: View) : RecyclerView.ViewHolder(container) {
 
         val noteTitle: TextView = container.listTitle
         val noteHighlight: TextView = container.listHighlight
@@ -43,13 +37,13 @@ class NotesViewAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.note_list_item,parent,false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
+        return NotesViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.note_list_item,parent,false))
     }
 
     override fun getItemCount(): Int = notes.size
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
         val note = notes[position]
         holder.noteTitle.text = note.title
         if(note.noteBody!!.length > 50){

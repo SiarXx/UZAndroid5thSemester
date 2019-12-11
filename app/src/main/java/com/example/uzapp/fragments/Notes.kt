@@ -15,6 +15,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.uzapp.R
 import com.example.uzapp.adapters.NotesViewAdapter
+import com.example.uzapp.interfaces.ListOnClickListener
+import com.example.uzapp.interfaces.OnLongClickListener
 import com.example.uzapp.models.Note
 import com.example.uzapp.tools.FileToNoteMapper
 import kotlinx.android.synthetic.main.fragment_notes.view.*
@@ -23,7 +25,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class Notes : Fragment(), NotesViewAdapter.ListOnClickListener,NotesViewAdapter.OnLongClickListener,View.OnClickListener,TextWatcher {
+class Notes : Fragment(), ListOnClickListener, OnLongClickListener,View.OnClickListener,TextWatcher {
 
     private val bundle = Bundle()
     var showedNotes = ArrayList<Note>()

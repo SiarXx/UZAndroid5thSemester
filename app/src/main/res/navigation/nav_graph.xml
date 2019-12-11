@@ -46,10 +46,19 @@
         android:id="@+id/reminders"
         android:name="com.example.uzapp.fragments.Reminders"
         android:label="fragment_reminders"
-        tools:layout="@layout/fragment_reminders" />
+        tools:layout="@layout/fragment_reminders" >
+        <action
+            android:id="@+id/action_reminders_to_reminderView"
+            app:destination="@id/reminderView" />
+    </fragment>
     <fragment
         android:id="@+id/noteView"
         android:name="com.example.uzapp.fragments.NoteView"
         android:label="fragment_note_view"
         tools:layout="@layout/fragment_note_view" />
+    <fragment
+        android:id="@+id/reminderView"
+        android:name="com.example.uzapp.fragments.ReminderView"
+        android:label="fragment_reminder_view"
+        tools:layout="@layout/fragment_reminder_view" />
 </navigation>

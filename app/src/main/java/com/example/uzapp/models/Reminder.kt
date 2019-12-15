@@ -8,5 +8,7 @@ data class Reminder(
     val reminderBody: String? = null,
     val reminderDate: String? = null,
     val reminderHour: String? = null,
-    var selected: Boolean = false
+    val reminderMinute: String? = null,
+    var selected: Boolean = false,
+    var archived: Boolean = false
 ):Serializable

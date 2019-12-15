@@ -50,7 +50,7 @@ class ReminderViewAdapter(
         val reminder = reminders[position]
         holder.reminderTitle.text = reminder.reminderTitle
         holder.reminderDate.text = formatter.stringToReminderDate(reminder.reminderDate!!)
-        holder.reminderHour.text = reminder.reminderHour
+        holder.reminderHour.text = (reminder.reminderHour +":"+reminder.reminderMinute)
         if(reminder.reminderBody!!.length > 50){
             holder.reminderHighlight.text = reminder.reminderBody.substring(0,47) + "..."
         }

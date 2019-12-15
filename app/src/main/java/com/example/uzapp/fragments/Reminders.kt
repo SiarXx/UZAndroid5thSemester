@@ -107,11 +107,11 @@ class Reminders : Fragment(), View.OnClickListener,ListOnClickListener, OnLongCl
     }
     override fun onLongClick(position: Int) {
         Toast.makeText(context,showedReminders[position].reminderTitle,Toast.LENGTH_SHORT).show()
-        reminders.forEach{
-            if(it.reminderTitle == showedReminders[position].reminderTitle){
-                it.selected = !it.selected
+            reminders.forEach {
+                if (it.reminderTitle == showedReminders[position].reminderTitle) {
+                    it.selected = !it.selected
+                }
             }
-        }
         reminderAdapter.notifyDataSetChanged()
     }
 

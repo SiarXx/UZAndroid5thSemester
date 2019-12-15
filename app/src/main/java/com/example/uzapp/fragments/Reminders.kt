@@ -20,6 +20,7 @@ import com.example.uzapp.interfaces.OnLongClickListener
 import com.example.uzapp.models.Reminder
 import com.example.uzapp.tools.FileToReminderMapper
 import kotlinx.android.synthetic.main.fragment_reminders.view.*
+import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -40,10 +41,15 @@ class Reminders : Fragment(), View.OnClickListener,ListOnClickListener, OnLongCl
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_reminders, container, false)
         val remindersRecyclerView = view.remindersRecyclerView
-        reminderAdapter = ReminderViewAdapter(reminders,this,this)
+        reminderAdapter = ReminderViewAdapter(showedReminders,this,this)
         remindersRecyclerView.adapter = reminderAdapter
         remindersRecyclerView.layoutManager = LinearLayoutManager(context)
 
+        //Reset Reminder List to show full list of reminders on start
+        showedReminders.clear()
+        reminders = listReminders()
+        showedReminders.addAll(reminders)
+        reminderAdapter.notifyDataSetChanged()
 
         //Fabs Click Listeners
         val addReminderBtn = view.addReminder
@@ -52,10 +58,24 @@ class Reminders : Fragment(), View.OnClickListener,ListOnClickListener, OnLongCl
         addReminderBtn.setOnClickListener(this)
         delRemindersBtn.setOnClickListener(this)
         backRemindersBtn.setOnClickListener(this)
+
+        search = view.searchReminder
+        search.addTextChangedListener(this)
+
         return view
     }
     private fun deleteStart(){
         Toast.makeText(context,"Delete Reminders TODO",Toast.LENGTH_SHORT).show()
+    }
+    private fun listReminders():ArrayList<Reminder>{
+        val directory = File(activity!!.filesDir,"Reminders")
+        if(!directory.exists()){
+            directory.mkdir()
+        }
+        val files: Array<File> = directory.listFiles()
+        val remindersTmp = ArrayList<Reminder>()
+        files.forEach { remindersTmp.add(mapper.mapReminders(it)) }
+        return remindersTmp
     }
     private fun updateShowedReminders(text: CharSequence?){
         val textToLower = text.toString().toLowerCase(Locale.getDefault())
@@ -92,6 +112,7 @@ class Reminders : Fragment(), View.OnClickListener,ListOnClickListener, OnLongCl
                 it.selected = !it.selected
             }
         }
+        reminderAdapter.notifyDataSetChanged()
     }
 
     override fun afterTextChanged(s: Editable?) {}

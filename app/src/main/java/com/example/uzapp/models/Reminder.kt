@@ -6,6 +6,7 @@ import java.util.*
 data class Reminder(
     val reminderTitle:String? = null,
     val reminderBody: String? = null,
-    val reminderDate: Date? = null,
+    val reminderDate: String? = null,
+    val reminderHour: String? = null,
     var selected: Boolean = false
 ):Serializable

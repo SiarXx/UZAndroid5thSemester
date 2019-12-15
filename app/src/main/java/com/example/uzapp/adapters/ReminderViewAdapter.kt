@@ -11,6 +11,7 @@ import com.example.uzapp.R
 import com.example.uzapp.interfaces.ListOnClickListener
 import com.example.uzapp.interfaces.OnLongClickListener
 import com.example.uzapp.models.Reminder
+import com.example.uzapp.tools.Formatter
 import kotlinx.android.synthetic.main.reminder_list_item.view.*
 
 class ReminderViewAdapter(
@@ -45,10 +46,11 @@ class ReminderViewAdapter(
     override fun getItemCount(): Int = reminders.size
 
     override fun onBindViewHolder(holder: ReminderViewHolder, position: Int) {
+        val formatter: Formatter = Formatter()
         val reminder = reminders[position]
         holder.reminderTitle.text = reminder.reminderTitle
-        holder.reminderDate.text = "SampleDate"
-        holder.reminderHour.text = "SampleHour"
+        holder.reminderDate.text = formatter.stringToReminderDate(reminder.reminderDate!!)
+        holder.reminderHour.text = reminder.reminderHour
         if(reminder.reminderBody!!.length > 50){
             holder.reminderHighlight.text = reminder.reminderBody.substring(0,47) + "..."
         }

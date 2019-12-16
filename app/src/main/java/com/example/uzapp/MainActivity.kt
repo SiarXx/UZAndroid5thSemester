@@ -6,9 +6,13 @@ import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.uzapp.database.AppDatabase
+import com.example.uzapp.tools.DBWorkerThread
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var dbWorker: DBWorkerThread
+    var mDb: AppDatabase? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -18,6 +22,12 @@ class MainActivity : AppCompatActivity() {
             val channel = NotificationChannel("2137", "kremowkowenotyfikacje", importance).apply {
                 description = "MlekoMaciejEasterEgg"
             }
+
+            // Create Database On Start
+            dbWorker = DBWorkerThread("dbWorker")
+            dbWorker.start()
+            mDb = AppDatabase.getInstance(this)
+
             // Register the channel with the system
             val notificationManager: NotificationManager =
                 getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager

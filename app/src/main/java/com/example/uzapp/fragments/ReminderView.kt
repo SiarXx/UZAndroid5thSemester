@@ -1,11 +1,7 @@
 package com.example.uzapp.fragments
 
 
-import android.app.AlarmManager
-import android.app.PendingIntent
 import android.app.TimePickerDialog
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,9 +20,11 @@ import java.io.FileWriter
 import java.lang.NullPointerException
 import java.text.SimpleDateFormat
 import java.util.*
-
-
-
+import android.app.AlarmManager
+import android.app.PendingIntent
+import com.example.uzapp.services.AlarmReceiver
+import android.content.Intent
+import android.content.Context
 
 
 class ReminderView : Fragment(),View.OnClickListener,CalendarView.OnDateChangeListener {
@@ -111,14 +109,22 @@ class ReminderView : Fragment(),View.OnClickListener,CalendarView.OnDateChangeLi
         TimePickerDialog(context, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
 
     }
-    private fun setupAlarm(){
-        val alarmManager = context!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val calAlarm = Calendar.getInstance()
-        val intent = Intent()
-        intent.putExtra("title","dupa")
-        val pendingIntent = PendingIntent.getBroadcast(context,1,intent,PendingIntent.FLAG_ONE_SHOT)
-        calAlarm.set(2019,11,15,23,31)
-        alarmManager.set(AlarmManager.RTC_WAKEUP,calAlarm.timeInMillis,pendingIntent)
+    private fun setupAlarm(date:String, time:String){
+        val day = date.substring(0,2).toInt()
+        val month = date.substring(2,4).toInt()-1
+        val year = date.substring(4).toInt()
+        val hour = time.substring(0,2).toInt()
+        val minute = time.substring(3).toInt()
+        val alarmIntent = Intent(context, AlarmReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, 0)
+        val manager = context!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager?
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = System.currentTimeMillis()
+        calendar.set(year,month,day,hour,minute,1)
+        manager!!.set(
+            AlarmManager.RTC_WAKEUP, calendar.timeInMillis,
+            pendingIntent
+        )
     }
 
     override fun onClick(view: View?) {
@@ -128,8 +134,8 @@ class ReminderView : Fragment(),View.OnClickListener,CalendarView.OnDateChangeLi
                     deleteOldReminder(selectedReminder)
                 }
                 saveReminder(Reminder(hourPicker.text.toString().replace(":","") + reminderSelectedDate + title.text,body.text.toString()))
-                Toast.makeText(context,sdf.format(calendarView.date).toString(), Toast.LENGTH_LONG).show()
-                setupAlarm()
+                Toast.makeText(context,"Alarm Set", Toast.LENGTH_LONG).show()
+                setupAlarm(reminderSelectedDate,hourPicker.text.toString())
                 Navigation.findNavController(view).popBackStack()
             }
             R.id.backReminderView -> Navigation.findNavController(view).popBackStack()

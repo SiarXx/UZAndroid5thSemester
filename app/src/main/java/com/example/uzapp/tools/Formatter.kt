@@ -21,4 +21,10 @@ class Formatter{
     fun reminderToString(reminder: Reminder):String{
         return (reminder.reminderHour + reminder.reminderMinute + reminder.reminderDate + reminder.reminderTitle)
     }
+    fun reminderDatetoComparableLong(date:String):Long{
+        var temp = ""
+        temp += date.substring(4)
+        temp += date.substring(2,4)
+        return temp.toLong()
+    }
 }

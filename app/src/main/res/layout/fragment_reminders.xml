@@ -48,6 +48,18 @@
         app:backgroundTint="@color/fabColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/addReminder"
+        app:layout_constraintStart_toEndOf="@+id/changeRemindersSet" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/changeRemindersSet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:src="@drawable/ic_sync_24px"
+        app:backgroundTint="@color/fabColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/deleteReminders"
         app:layout_constraintStart_toEndOf="@+id/backReminders" />
 
     <androidx.constraintlayout.widget.ConstraintLayout

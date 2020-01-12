@@ -20,4 +20,7 @@ interface PhoneBookDao{
 
     @Query("SELECT * FROM PhoneBookEntity WHERE id == :id")
     fun selectPhoneBookPosition(id: Int?): List<PhoneBookEntity>
+
+    @Query("SELECT * FROM PhoneBookEntity WHERE  name like :search OR lastname like :search OR email like :search OR number like :search")
+    fun findMatchingNumber(search: String?): List<PhoneBookEntity>
 }

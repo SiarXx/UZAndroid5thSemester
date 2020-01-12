@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/contactsAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[0]" />
+
+    <TextView
+        android:id="@+id/contactsName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="4dp"
+        android:text="Name"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/contactsAvatar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/contactsLastname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="8dp"
+        android:text="Lastname"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/contactsAvatar"
+        app:layout_constraintTop_toBottomOf="@id/contactsName" />
+
+    <TextView
+        android:id="@+id/contactsNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="8dp"
+        android:text="123456789"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/contactsAvatar"
+        app:layout_constraintTop_toBottomOf="@id/contactsLastname" />
+
+    <TextView
+        android:id="@+id/contactsEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="8dp"
+        android:text="example@example.com"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/contactsAvatar"
+        app:layout_constraintTop_toBottomOf="@id/contactsNumber" />
+</androidx.constraintlayout.widget.ConstraintLayout>

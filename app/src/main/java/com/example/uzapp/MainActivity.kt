@@ -16,6 +16,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Create Database On Start
+        dbWorker = DBWorkerThread("dbWorker")
+        dbWorker.start()
+        mDb = AppDatabase.getInstance(this)
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
             val importance = NotificationManager.IMPORTANCE_DEFAULT
@@ -23,10 +29,6 @@ class MainActivity : AppCompatActivity() {
                 description = "MlekoMaciejEasterEgg"
             }
 
-            // Create Database On Start
-            dbWorker = DBWorkerThread("dbWorker")
-            dbWorker.start()
-            mDb = AppDatabase.getInstance(this)
 
             // Register the channel with the system
             val notificationManager: NotificationManager =

@@ -7,7 +7,7 @@ import java.io.Serializable
 
 @Entity
 data class PhoneBookEntity(
-    @PrimaryKey val id: Int? = null,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo(name = "name") var name: String? = null,
     @ColumnInfo(name = "lastname") var lastName: String? = null,
     @ColumnInfo(name = "sex") var sex: String? = null,

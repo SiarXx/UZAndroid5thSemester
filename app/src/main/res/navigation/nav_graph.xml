@@ -27,7 +27,11 @@
         android:id="@+id/contacts"
         android:name="com.example.uzapp.fragments.Contacts"
         android:label="fragment_contacts"
-        tools:layout="@layout/fragment_contacts" />
+        tools:layout="@layout/fragment_contacts" >
+        <action
+            android:id="@+id/action_contacts_to_contactsView"
+            app:destination="@id/contactsView" />
+    </fragment>
     <fragment
         android:id="@+id/multimedia"
         android:name="com.example.uzapp.fragments.Multimedia"
@@ -61,4 +65,9 @@
         android:name="com.example.uzapp.fragments.ReminderView"
         android:label="fragment_reminder_view"
         tools:layout="@layout/fragment_reminder_view" />
+    <fragment
+        android:id="@+id/contactsView"
+        android:name="com.example.uzapp.fragments.ContactsView"
+        android:label="fragment_contacts_view"
+        tools:layout="@layout/fragment_contacts_view" />
 </navigation>

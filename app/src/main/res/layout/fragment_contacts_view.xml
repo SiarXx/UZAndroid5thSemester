@@ -1,14 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ContactsView">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <EditText
+        android:id="@+id/CVName"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:lines="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/CVLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="LastName"
+        android:maxLines="1"
+        app:layout_constraintTop_toBottomOf="@id/CVName"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/CVMail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="E-Mail"
+        android:lines="1"
+        app:layout_constraintTop_toBottomOf="@id/CVLastName"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/CVNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Number"
+        android:lines="1"
+        app:layout_constraintTop_toBottomOf="@id/CVMail"
+        app:layout_constraintStart_toStartOf="parent"
+        android:inputType="number"
+        android:maxLength="9"
+        android:layout_marginTop="16dp"/>
+
+    <Spinner
+        android:id="@+id/CVSex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/Sex"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/CVNumber"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/CVAvatar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="TopSecretPasswordRequiredOMFGMLEKO"
+        android:lines="1"
+        app:layout_constraintTop_toBottomOf="@id/CVSex"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/backContactsView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@drawable/ic_arrow_back_24px"
+        app:backgroundTint="@color/fabColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/saveContact"
+        android:layout_margin="16dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/saveContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:src="@drawable/ic_save_24px"
+        app:backgroundTint="@color/fabColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/backContactsView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

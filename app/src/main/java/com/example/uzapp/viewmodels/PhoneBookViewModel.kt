@@ -9,10 +9,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class PhoneBookViewModel (application: Application): ViewModel(){
-    private val phoneBookRepository = PhoneBookRepository(application)
-    fun getAllPhoneBooks() = phoneBookRepository.allPhoneBooks
-
-    fun putAllPlayers(phoneBooks: List<PhoneBookEntity>) = viewModelScope.launch(Dispatchers.IO){
-        phoneBookRepository.insertPhoneBooks(phoneBooks)
-    }
+//    private val phoneBookRepository = PhoneBookRepository(application)
+//    fun getAllPhoneBooks() = phoneBookRepository.allPhoneBooks
+//
+//    fun putAllPhoneBooks(phoneBooks: List<PhoneBookEntity>) = viewModelScope.launch(Dispatchers.IO){
+//        phoneBookRepository.insertPhoneBooks(phoneBooks)
+//    }
+//    fun deletePhoneBookEntry(id: Int) = viewModelScope.launch(Dispatchers.IO) {
+//        phoneBookRepository.deletePhoneBook(id)
+//    }
+//    fun findPhoneBooks(string: String){
+//        phoneBookRepository.getSelectedPhoneBooks("%$string%")
+//    }
 }

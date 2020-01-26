@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 
 import com.example.uzapp.R
 import kotlinx.android.synthetic.main.fragment_multimedia.view.*
@@ -26,7 +27,9 @@ class Multimedia : Fragment(),View.OnClickListener {
         val view = inflater.inflate(R.layout.fragment_multimedia, container, false)
 
         val wieaBtn = view.WieaBtn
+        val pictureBtn = view.PictureBtn
         wieaBtn.setOnClickListener(this)
+        pictureBtn.setOnClickListener(this)
 
         return view
     }
@@ -48,6 +51,7 @@ class Multimedia : Fragment(),View.OnClickListener {
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.WieaBtn -> nuclearLaunch()
+            R.id.PictureBtn -> Navigation.findNavController(v).navigate(R.id.action_multimedia_to_pictureFragment)
         }
     }
 }

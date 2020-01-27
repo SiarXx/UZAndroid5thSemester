@@ -28,8 +28,10 @@ class Multimedia : Fragment(),View.OnClickListener {
 
         val wieaBtn = view.WieaBtn
         val pictureBtn = view.PictureBtn
+        val paintBtn = view.GoToPaintBtn
         wieaBtn.setOnClickListener(this)
         pictureBtn.setOnClickListener(this)
+        paintBtn.setOnClickListener(this)
 
         return view
     }
@@ -52,6 +54,7 @@ class Multimedia : Fragment(),View.OnClickListener {
         when(v!!.id){
             R.id.WieaBtn -> nuclearLaunch()
             R.id.PictureBtn -> Navigation.findNavController(v).navigate(R.id.action_multimedia_to_pictureFragment)
+            R.id.GoToPaintBtn -> Navigation.findNavController(v).navigate(R.id.action_multimedia_to_paint)
         }
     }
 }
